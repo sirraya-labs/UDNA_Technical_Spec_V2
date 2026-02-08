@@ -64,13 +64,14 @@
             --space-2xl: 3rem;
             --space-3xl: 4rem;
             --space-4xl: 6rem;
+            --space-5xl: 8rem;
             
             /* Typography */
             --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
             --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
             
             /* Layout */
-            --max-width: 1200px;
+            --max-width: 100%;
             --header-height: 64px;
             --sidebar-width: 280px;
             --border-radius: 8px;
@@ -123,13 +124,14 @@
             background: var(--bg-primary);
             min-height: 100vh;
             overflow-x: hidden;
+            max-width: 100vw;
         }
         
-        /* Layout Container */
+        /* Full Width Container */
         .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 var(--space-xl);
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
         }
         
         /* Header */
@@ -144,9 +146,12 @@
             z-index: 1000;
             backdrop-filter: blur(10px);
             background: rgba(var(--bg-primary), 0.95);
+            padding: 0 var(--space-xl);
         }
         
         .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
             height: 100%;
             display: flex;
             align-items: center;
@@ -205,6 +210,10 @@
             padding-top: calc(var(--header-height) + var(--space-2xl));
             padding-bottom: var(--space-4xl);
             min-height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: var(--space-xl);
+            padding-right: var(--space-xl);
         }
         
         /* Sidebar Navigation */
@@ -327,7 +336,8 @@
         
         /* Main Content */
         .main-content {
-            min-width: 0; /* For proper flexbox/table behavior */
+            min-width: 0;
+            width: 100%;
         }
         
         /* Document Header */
@@ -339,6 +349,7 @@
             border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
         
         .doc-header::before {
@@ -420,6 +431,7 @@
         .content-section {
             margin-bottom: var(--space-4xl);
             scroll-margin-top: 120px;
+            width: 100%;
         }
         
         .section-header {
@@ -427,6 +439,7 @@
             padding-bottom: var(--space-lg);
             border-bottom: 2px solid var(--border-color);
             position: relative;
+            width: 100%;
         }
         
         .section-header::after {
@@ -495,6 +508,7 @@
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-md);
             transition: transform var(--transition-base), box-shadow var(--transition-base);
+            width: 100%;
         }
         
         .card:hover {
@@ -539,6 +553,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--space-lg);
             margin: var(--space-2xl) 0;
+            width: 100%;
         }
         
         .feature-card {
@@ -582,6 +597,7 @@
             border-radius: var(--border-radius);
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-sm);
+            width: 100%;
         }
         
         table {
@@ -632,6 +648,7 @@
             margin: var(--space-xl) 0;
             overflow: hidden;
             border: 1px solid var(--border-color);
+            width: 100%;
         }
         
         .code-header {
@@ -695,6 +712,40 @@
             padding: var(--space-xl);
             margin: var(--space-2xl) 0;
             border: 1px solid var(--border-color);
+            width: 100%;
+        }
+        
+        /* ASCII Art Table */
+        .ascii-table {
+            background: var(--gray-900);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            margin: var(--space-xl) 0;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.4;
+            color: var(--gray-100);
+            border: 1px solid var(--border-color);
+        }
+        
+        .ascii-table table {
+            min-width: auto;
+            border: none;
+            background: transparent;
+        }
+        
+        .ascii-table td {
+            padding: 0;
+            border: none;
+            color: var(--gray-100);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+        
+        .ascii-table tr:hover {
+            background: transparent;
         }
         
         .bit-grid {
@@ -741,6 +792,7 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: var(--space-lg);
             margin: var(--space-2xl) 0;
+            width: 100%;
         }
         
         .layer-card {
@@ -777,6 +829,7 @@
             border-radius: var(--border-radius-lg);
             padding: var(--space-2xl);
             margin: var(--space-4xl) 0;
+            width: 100%;
         }
         
         .reference-list {
@@ -804,14 +857,18 @@
             border-top: 1px solid var(--border-color);
             padding: var(--space-3xl) 0;
             margin-top: var(--space-4xl);
+            width: 100%;
         }
         
         .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: var(--space-xl);
+            padding: 0 var(--space-xl);
         }
         
         .footer-links {
@@ -875,6 +932,24 @@
             border-color: var(--primary-dark);
         }
         
+        /* Explanation Boxes */
+        .explanation-box {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border-left: 4px solid var(--accent-teal);
+            padding: var(--space-lg);
+            margin: var(--space-xl) 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .explanation-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-weight: 600;
+            color: var(--accent-teal);
+            margin-bottom: var(--space-sm);
+        }
+        
         /* Mobile Menu */
         .mobile-menu-toggle {
             display: none;
@@ -896,10 +971,19 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .main-grid {
+                padding-left: var(--space-lg);
+                padding-right: var(--space-lg);
+            }
+        }
+        
         @media (max-width: 1024px) {
             .main-grid {
                 grid-template-columns: 1fr;
                 gap: var(--space-xl);
+                padding-left: var(--space-md);
+                padding-right: var(--space-md);
             }
             
             .sidebar {
@@ -922,15 +1006,19 @@
             .mobile-menu-toggle {
                 display: flex;
             }
+            
+            .doc-title {
+                font-size: 2.5rem;
+            }
         }
         
         @media (max-width: 768px) {
-            .container {
+            .header {
                 padding: 0 var(--space-lg);
             }
             
             .doc-title {
-                font-size: 2.25rem;
+                font-size: 2rem;
             }
             
             h2 {
@@ -949,11 +1037,23 @@
                 flex-direction: column;
                 text-align: center;
                 gap: var(--space-lg);
+                padding: 0 var(--space-lg);
             }
             
             .footer-links {
                 flex-direction: column;
                 gap: var(--space-md);
+            }
+            
+            .doc-meta {
+                gap: var(--space-md);
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .main-grid {
+                padding-left: var(--space-sm);
+                padding-right: var(--space-sm);
             }
         }
         
@@ -1004,30 +1104,94 @@
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
             margin: var(--space-xl) 0;
         }
+        
+        /* Full-width sections */
+        .full-width-section {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            padding: var(--space-3xl) var(--space-xl);
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--space-4xl);
+        }
+        
+        .full-width-section .section-header {
+            max-width: 1400px;
+            margin: 0 auto var(--space-2xl);
+            padding: 0 var(--space-xl);
+        }
+        
+        .full-width-section .section-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+        
+        /* Protocol Stack Diagram */
+        .protocol-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            margin: var(--space-2xl) 0;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .stack-layer {
+            background: var(--bg-card);
+            padding: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            transition: all var(--transition-fast);
+        }
+        
+        .stack-layer:hover {
+            background: var(--bg-tertiary);
+            transform: translateX(4px);
+        }
+        
+        .stack-number {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">
-                    <div class="logo-icon">UDNA</div>
-                    <div class="logo-text">
-                        <div class="logo-title">Universal DID-Native Addressing</div>
-                        <div class="logo-subtitle">W3C Community Group Specification</div>
-                    </div>
-                </a>
-                
-                <div class="header-actions">
-                    <button class="btn" onclick="toggleTheme()">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <a href="https://github.com/w3c-cg/udna" class="btn btn-primary" target="_blank">
-                        <i class="fab fa-github"></i>
-                        GitHub
-                    </a>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">UDNA</div>
+                <div class="logo-text">
+                    <div class="logo-title">Universal DID-Native Addressing</div>
+                    <div class="logo-subtitle">W3C Community Group Specification</div>
                 </div>
+            </a>
+            
+            <div class="header-actions">
+                <button class="btn" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="https://github.com/w3c-cg/udna" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
             </div>
         </div>
     </header>
@@ -1218,10 +1382,27 @@
                     </div>
                     
                     <p class="lead">
-                        A paradigm shift in network architecture that elevates Decentralized Identifiers (DIDs) 
-                        from application-layer constructs to fundamental network primitives, providing inherent 
-                        trust, authentication, and privacy at the network layer.
+                        Universal DID-Native Addressing (UDNA) integrates Decentralized Identifiers (DIDs) as fundamental network addresses, 
+                        enabling identity-based routing and communication. This specification defines a network architecture where 
+                        cryptographic identity and network addressing are unified, providing built-in authentication, privacy, 
+                        and trust mechanisms at the network layer.
                     </p>
+                    
+                    <div class="explanation-box">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            Core Concept Explained
+                        </div>
+                        <p>
+                            <strong>Traditional Internet:</strong> IP addresses (e.g., 192.168.1.1) identify locations, not entities. 
+                            Separate systems (DNS, PKI, etc.) are needed to map names to addresses and establish trust.
+                        </p>
+                        <p>
+                            <strong>UDNA Approach:</strong> DIDs (e.g., did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK) 
+                            serve as both identity and address. Each DID resolves to a cryptographically verifiable document containing 
+                            public keys and service endpoints, eliminating the need for separate trust systems.
+                        </p>
+                    </div>
                 </section>
 
                 <!-- Abstract -->
@@ -1231,16 +1412,16 @@
                         Abstract
                     </div>
                     <p>
-                        Universal DID-Native Addressing (UDNA) represents a fundamental redesign of network architecture, 
-                        elevating Decentralized Identifiers (DIDs) from application-layer constructs to core network 
-                        primitives. By making identity synonymous with address, UDNA eliminates the traditional separation 
-                        between "who" and "where," providing inherent trust, authentication, and privacy at the network layer.
+                        Universal DID-Native Addressing (UDNA) is a network architecture specification that integrates 
+                        Decentralized Identifiers (DIDs) as native network addresses. By using cryptographic identities 
+                        as network endpoints, UDNA enables location-independent routing, inherent authentication, 
+                        and privacy-preserving communication.
                     </p>
                     <p>
-                        This specification defines the complete technical framework for implementing UDNA-based systems, 
-                        including protocol mechanics, cryptographic requirements, architectural considerations, and 
-                        implementation guidelines. UDNA enables location-independent routing, self-sovereign identity 
-                        as a network service, and privacy-preserving communication through built-in pairwise identity systems.
+                        This specification provides the complete technical framework for UDNA implementation, 
+                        including protocol mechanics, cryptographic requirements, architectural design, and 
+                        implementation guidelines. UDNA addresses fundamental limitations in current internet 
+                        architecture by unifying identity and addressing at the network layer.
                     </p>
                 </section>
 
@@ -1264,7 +1445,7 @@
                         <p><strong>This document is a draft technical specification.</strong> It is subject to change and should not be considered stable for production implementation without further review and standardization.</p>
                         
                         <div class="warning">
-                            <p><strong>⚠️ Important:</strong> This is a Community Group Draft and does not represent W3C consensus. It is inappropriate to cite this document as other than work in progress.</p>
+                            <p><strong>Important:</strong> This is a Community Group Draft and does not represent W3C consensus. It is inappropriate to cite this document as other than work in progress.</p>
                         </div>
                         
                         <p>This document is published by the Universal DID-Native Addressing (UDNA) Community Group as part of the W3C Community Group process. GitHub Issues are preferred for discussion of this specification.</p>
@@ -1279,26 +1460,27 @@
                     
                     <h3>1.1 Problem Statement</h3>
                     <p>
-                        The contemporary Internet architecture suffers from a fundamental design flaw: the conflation 
-                        of identity and location within IP addressing. An IP address simultaneously answers "who are you?" 
-                        and "where are you?", leading to cascading complexity in subsequent protocol layers.
+                        Current internet architecture separates identity from addressing, requiring multiple layered systems 
+                        to establish communication and trust:
                     </p>
                     
-                    <div class="highlight">
-                        <p><strong>Architectural Deficiencies:</strong></p>
+                    <div class="explanation-box">
+                        <div class="explanation-title">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Current Internet Architecture Limitations
+                        </div>
                         <ul>
-                            <li><strong>DNS</strong> for human-readable naming (centralization point)</li>
-                            <li><strong>PKI/CA systems</strong> for establishing trust (hierarchical dependencies)</li>
-                            <li><strong>NAT</strong> for address space management (breaks end-to-end principle)</li>
-                            <li><strong>Complex application-layer protocols</strong> for authentication and authorization</li>
+                            <li><strong>IP Addresses</strong> identify network interfaces, not entities or users</li>
+                            <li><strong>DNS</strong> provides name resolution but introduces centralization and single points of failure</li>
+                            <li><strong>Public Key Infrastructure (PKI)</strong> requires certificate authorities as trusted third parties</li>
+                            <li><strong>Network Address Translation (NAT)</strong> breaks end-to-end connectivity</li>
+                            <li><strong>Application-layer protocols</strong> must reimplement authentication and authorization</li>
                         </ul>
                     </div>
 
                     <h3>1.2 Solution Approach</h3>
                     <p>
-                        UDNA proposes a radical architectural simplification: <strong class="text-gradient">Identity is Address</strong>. 
-                        By promoting Decentralized Identifiers (DIDs) from application constructs to network primitives, 
-                        UDNA inherently provides:
+                        UDNA integrates Decentralized Identifiers (DIDs) as native network addresses, providing:
                     </p>
                     
                     <div class="feature-grid">
@@ -1306,32 +1488,32 @@
                             <div class="feature-icon">
                                 <i class="fas fa-fingerprint"></i>
                             </div>
-                            <h4 class="feature-title">Self-Sovereign Identity</h4>
-                            <p>Users control their own identity and cryptographic keys at the network layer</p>
+                            <h4 class="feature-title">Identity-based Addressing</h4>
+                            <p>Network addresses are cryptographic identities, enabling direct entity-to-entity communication</p>
                         </div>
                         
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-lock"></i>
                             </div>
-                            <h4 class="feature-title">Cryptographic Authentication</h4>
-                            <p>Built-in authentication as a first-class network service</p>
+                            <h4 class="feature-title">Built-in Authentication</h4>
+                            <p>Authentication is inherent to the network layer through cryptographic proofs</p>
                         </div>
                         
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-user-secret"></i>
                             </div>
-                            <h4 class="feature-title">Privacy-by-Design</h4>
-                            <p>Unlinkable pairwise identities and encrypted communications</p>
+                            <h4 class="feature-title">Privacy by Design</h4>
+                            <p>Pairwise ephemeral DIDs enable unlinkable communication and privacy preservation</p>
                         </div>
                         
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <i class="fas fa-network-wired"></i>
                             </div>
-                            <h4 class="feature-title">Decentralized Trust</h4>
-                            <p>No certificate authorities or single points of failure</p>
+                            <h4 class="feature-title">Decentralized Operation</h4>
+                            <p>No single points of control or failure in the addressing and routing system</p>
                         </div>
                     </div>
 
@@ -1343,17 +1525,17 @@
                             </div>
                             <div>
                                 <div class="card-title">Core Design Principles</div>
-                                <div class="card-subtitle">Guiding Architecture Decisions</div>
+                                <div class="card-subtitle">Technical Foundation of UDNA</div>
                             </div>
                         </div>
                         
                         <ul>
-                            <li><strong>Decentralization</strong>: No single point of control or failure</li>
-                            <li><strong>Self-Sovereignty</strong>: Users control their own identity and keys</li>
-                            <li><strong>Privacy</strong>: Unlinkable pairwise identities and encrypted communications</li>
-                            <li><strong>Interoperability</strong>: Compatibility with existing DID methods and protocols</li>
-                            <li><strong>Extensibility</strong>: Modular design supporting future cryptographic advances</li>
-                            <li><strong>Performance</strong>: Efficient routing and minimal computational overhead</li>
+                            <li><strong>Decentralization</strong>: No central authorities or single points of failure in the addressing system</li>
+                            <li><strong>Self-Sovereign Identity</strong>: Users control their cryptographic keys and identity documents</li>
+                            <li><strong>Privacy Preservation</strong>: Built-in mechanisms for unlinkable communication and data protection</li>
+                            <li><strong>Protocol Interoperability</strong>: Compatibility with existing DID methods and network protocols</li>
+                            <li><strong>Cryptographic Agility</strong>: Support for multiple cryptographic algorithms and future advances</li>
+                            <li><strong>Network Efficiency</strong>: Optimized routing and minimal overhead for practical deployment</li>
                         </ul>
                     </div>
                 </section>
@@ -1372,13 +1554,13 @@
                                 <tr>
                                     <th width="200">Term</th>
                                     <th>Definition</th>
-                                    <th width="150">Mathematical Notation</th>
+                                    <th width="150">Notation</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><strong>Decentralized Identifier (DID)</strong></td>
-                                    <td>A URI conforming to RFC 3986 composed of three parts: `did:method:identifier`. Each DID resolves to a DID Document containing cryptographic material and service endpoints.</td>
+                                    <td>A URI composed of three parts: `did:method:identifier`. Resolves to a DID Document containing cryptographic material and service endpoints.</td>
                                     <td><code>did:M:ID</code></td>
                                 </tr>
                                 <tr>
@@ -1393,7 +1575,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Pairwise-Ephemeral DID (PE-DID)</strong></td>
-                                    <td>A short-lived DID derived from a PP-DID for specific transactions or relationships, providing unlinkable privacy.</td>
+                                    <td>A short-lived DID derived from a privacy-preserving DID for specific transactions, providing unlinkability.</td>
                                     <td><code>PE = KDF(Root, Context)</code></td>
                                 </tr>
                                 <tr>
@@ -1438,37 +1620,37 @@ A ⊕ B : XOR distance between identifiers A and B</code></pre>
                     <div class="architecture-visual">
                         <div class="layer-card">
                             <div class="layer-number">6</div>
-                            <h4>Application Plane</h4>
+                            <h4>Application Layer</h4>
                             <p>DApps, Services, User Interfaces</p>
                         </div>
                         
                         <div class="layer-card">
                             <div class="layer-number">5</div>
-                            <h4>Security & Privacy Plane</h4>
+                            <h4>Security & Privacy Layer</h4>
                             <p>ZCAPs, Pairwise DIDs, Encryption</p>
                         </div>
                         
                         <div class="layer-card">
                             <div class="layer-number">4</div>
-                            <h4>Network Plane</h4>
+                            <h4>Network Layer</h4>
                             <p>SCP Overlay, Routing, Discovery</p>
                         </div>
                         
                         <div class="layer-card">
                             <div class="layer-number">3</div>
-                            <h4>Cryptographic Plane</h4>
+                            <h4>Cryptographic Layer</h4>
                             <p>Key Management, Signatures, KDFs</p>
                         </div>
                         
                         <div class="layer-card">
                             <div class="layer-number">2</div>
-                            <h4>Resolution Plane</h4>
+                            <h4>Resolution Layer</h4>
                             <p>DID Resolution, Document Caching</p>
                         </div>
                         
                         <div class="layer-card">
                             <div class="layer-number">1</div>
-                            <h4>Binary Plane</h4>
+                            <h4>Binary Protocol Layer</h4>
                             <p>Wire Protocol, Header Format</p>
                         </div>
                     </div>
@@ -1482,7 +1664,7 @@ A ⊕ B : XOR distance between identifiers A and B</code></pre>
                                     <th>Layer</th>
                                     <th>Traditional Internet</th>
                                     <th>UDNA/SCP Network</th>
-                                    <th>Benefit</th>
+                                    <th>Improvement</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1502,7 +1684,7 @@ A ⊕ B : XOR distance between identifiers A and B</code></pre>
                                     <td><strong>Trust</strong></td>
                                     <td>PKI/CA (Hierarchical)</td>
                                     <td>Self-sovereign cryptography</td>
-                                    <td class="good">No single points of failure</td>
+                                    <td class="good">No central authorities</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Authentication</strong></td>
@@ -1519,6 +1701,23 @@ A ⊕ B : XOR distance between identifiers A and B</code></pre>
                             </tbody>
                         </table>
                     </div>
+                    
+                    <div class="explanation-box">
+                        <div class="explanation-title">
+                            <i class="fas fa-question-circle"></i>
+                            Why This Architecture Matters
+                        </div>
+                        <p>
+                            <strong>Traditional Approach:</strong> Applications must implement their own authentication, 
+                            manage certificate authorities, and handle NAT traversal. Each layer adds complexity and 
+                            potential security vulnerabilities.
+                        </p>
+                        <p>
+                            <strong>UDNA Approach:</strong> Identity, authentication, and privacy are built into the network layer. 
+                            Applications communicate directly using cryptographic identities, eliminating the need for 
+                            intermediate trust systems and simplifying development.
+                        </p>
+                    </div>
                 </section>
 
                 <!-- 4. Core Protocol -->
@@ -1530,117 +1729,112 @@ A ⊕ B : XOR distance between identifiers A and B</code></pre>
                     <h3>4.1 UDNA Address Header Format</h3>
                     
                     <div class="protocol-diagram">
-                        <h4>Header Structure Visualization</h4>
+                        <h4>Header Structure</h4>
                         
-                        <div class="bit-grid">
-                            <!-- Version (8 bits) -->
-                            <div class="bit-cell bit-label">V</div>
-                            <div class="bit-cell bit-label">E</div>
-                            <div class="bit-cell bit-label">R</div>
-                            <div class="bit-cell bit-label">S</div>
-                            <div class="bit-cell bit-label">I</div>
-                            <div class="bit-cell bit-label">O</div>
-                            <div class="bit-cell bit-label">N</div>
-                            <div class="bit-cell bit-label"></div>
-                            
-                            <!-- Flags (16 bits) -->
-                            <div class="bit-cell bit-control">P</div>
-                            <div class="bit-cell bit-control">R</div>
-                            <div class="bit-cell bit-control">E</div>
-                            <div class="bit-cell bit-control">A</div>
-                            <div class="bit-cell bit-control">K</div>
-                            <div class="bit-cell bit-control"></div>
-                            <div class="bit-cell bit-control"></div>
-                            <div class="bit-cell bit-control"></div>
-                            <div class="bit-cell bit-control"></div>
-                            <div class="bit-cell bit-control"></div>
-                            <div class="bit-cell bit-control"></div>
-                            <div class="bit-cell bit-control"></div>
-                            <div class="bit-cell bit-control"></div>
-                            <div class="bit-cell bit-control"></div>
-                            <div class="bit-cell bit-control"></div>
-                            <div class="bit-cell bit-control"></div>
-                            
-                            <!-- DID Type (8 bits) -->
-                            <div class="bit-cell bit-label">D</div>
-                            <div class="bit-cell bit-label">I</div>
-                            <div class="bit-cell bit-label">D</div>
-                            <div class="bit-cell bit-label">T</div>
-                            <div class="bit-cell bit-label"></div>
-                            <div class="bit-cell bit-label"></div>
-                            <div class="bit-cell bit-label"></div>
-                            <div class="bit-cell bit-label"></div>
-                            
-                            <!-- DID Length (8 bits) -->
-                            <div class="bit-cell bit-data">L</div>
-                            <div class="bit-cell bit-data">E</div>
-                            <div class="bit-cell bit-data">N</div>
-                            <div class="bit-cell bit-data"></div>
-                            <div class="bit-cell bit-data"></div>
-                            <div class="bit-cell bit-data"></div>
-                            <div class="bit-cell bit-data"></div>
-                            <div class="bit-cell bit-data"></div>
-                            
-                            <!-- Facet ID (8 bits) -->
-                            <div class="bit-cell bit-data">F</div>
-                            <div class="bit-cell bit-data">A</div>
-                            <div class="bit-cell bit-data">C</div>
-                            <div class="bit-cell bit-data">E</div>
-                            <div class="bit-cell bit-data">T</div>
-                            <div class="bit-cell bit-data"></div>
-                            <div class="bit-cell bit-data"></div>
-                            <div class="bit-cell bit-data"></div>
-                            
-                            <!-- Reserved (8 bits) -->
-                            <div class="bit-cell">R</div>
-                            <div class="bit-cell">E</div>
-                            <div class="bit-cell">S</div>
-                            <div class="bit-cell"></div>
-                            <div class="bit-cell"></div>
-                            <div class="bit-cell"></div>
-                            <div class="bit-cell"></div>
-                            <div class="bit-cell"></div>
-                            
-                            <!-- DID Bytes (Variable) -->
-                            <div class="bit-cell bit-data" style="grid-column: span 32;">DID Bytes (Variable Length)</div>
-                            
-                            <!-- Key Hint (256 bits) -->
-                            <div class="bit-cell bit-data" style="grid-column: span 32;">Key Hint (32 bytes / 256 bits)</div>
-                            
-                            <!-- Route Hint (Variable) -->
-                            <div class="bit-cell" style="grid-column: span 32;">Route Hint (CBOR-encoded, Variable)</div>
-                            
-                            <!-- Nonce (128 bits) -->
-                            <div class="bit-cell bit-data" style="grid-column: span 16;">Nonce (16 bytes / 128 bits)</div>
-                            
-                            <!-- Signature (Variable) -->
-                            <div class="bit-cell bit-control" style="grid-column: span 32;">Signature (Variable, ≥64 bytes)</div>
+                        <!-- ASCII Art Table for Protocol Header -->
+                        <div class="ascii-table">
+                            <table>
+                                <tr>
+                                    <td>┌─────────────────────────────────────────────────────────────────────────┐</td>
+                                </tr>
+                                <tr>
+                                    <td>│                         UDNA Header Format                              │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────────────────────────────────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  Offset │ Size │ Field       │ Description                              │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│   0     │  1   │ Version     │ Protocol version (0x01)                  │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│   1     │  2   │ Flags       │ Protocol control flags                   │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│   3     │  1   │ DID Type    │ DID method identifier                    │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│   4     │  1   │ DID Length  │ Length of DID in bytes                  │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│   5     │  1   │ Facet ID    │ Service facet identifier (0-255)        │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│   6     │  1   │ Reserved    │ Reserved for future use                 │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│   7     │  n   │ DID Bytes   │ DID identifier bytes (variable)         │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│   7+n   │  32  │ Key Hint    │ Public key hint (256 bits)              │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  39+n   │  m   │ Route Hint  │ Route information (CBOR, variable)      │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  39+n+m │  16  │ Nonce       │ Random nonce (128 bits)                 │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────┼──────┼─────────────┼─────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  55+n+m │  k   │ Signature   │ Cryptographic signature (≥64 bytes)    │</td>
+                                </tr>
+                                <tr>
+                                    <td>└─────────┴──────┴─────────────┴─────────────────────────────────────────┘</td>
+                                </tr>
+                            </table>
                         </div>
                         
-                        <div class="feature-grid" style="margin-top: var(--space-xl);">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-binary"></i>
-                                </div>
-                                <h4 class="feature-title">Fixed Header</h4>
-                                <p>8-byte fixed header containing version, flags, DID type, lengths, and facet ID</p>
+                        <div class="explanation-box">
+                            <div class="explanation-title">
+                                <i class="fas fa-info-circle"></i>
+                                Header Field Explanation
                             </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-exchange-alt"></i>
-                                </div>
-                                <h4 class="feature-title">Variable Data</h4>
-                                <p>DID bytes, key hints, route information, and cryptographic signatures</p>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <h4 class="feature-title">Security Fields</h4>
-                                <p>Nonce for replay protection, signatures for integrity and authentication</p>
-                            </div>
+                            <p>
+                                <strong>Key Hint (32 bytes):</strong> A truncated hash of the public key, used for efficient key 
+                                lookup in resolution caches without revealing the full public key.
+                            </p>
+                            <p>
+                                <strong>Route Hint (variable):</strong> CBOR-encoded routing information that helps nodes 
+                                efficiently locate the destination, particularly useful for mobile or NAT-traversed nodes.
+                            </p>
+                            <p>
+                                <strong>Nonce (16 bytes):</strong> Prevents replay attacks and ensures message uniqueness. 
+                                Each message must have a unique nonce within its validity period.
+                            </p>
                         </div>
                     </div>
 
@@ -1715,6 +1909,61 @@ Bits 5-15: Reserved for future use</code></pre>
                     </div>
                 </section>
 
+                <!-- Full-width Architecture Section -->
+                <section class="full-width-section">
+                    <div class="section-header">
+                        <h2>How UDNA Works: A Practical Example</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <div class="protocol-stack">
+                            <div class="stack-layer">
+                                <div class="stack-number">1</div>
+                                <div>
+                                    <strong>DID Creation</strong>: Alice generates a cryptographic key pair and creates a DID (e.g., did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK)
+                                </div>
+                            </div>
+                            <div class="stack-layer">
+                                <div class="stack-number">2</div>
+                                <div>
+                                    <strong>Document Publication</strong>: Alice creates a DID Document with her public key and service endpoints, then publishes it to the DHT
+                                </div>
+                            </div>
+                            <div class="stack-layer">
+                                <div class="stack-number">3</div>
+                                <div>
+                                    <strong>Address Resolution</strong>: Bob wants to send a message to Alice. He uses her DID as the address, and the network resolves it to current network locations
+                                </div>
+                            </div>
+                            <div class="stack-layer">
+                                <div class="stack-number">4</div>
+                                <div>
+                                    <strong>Secure Session</strong>: Bob establishes an encrypted session using Alice's public key from her DID Document
+                                </div>
+                            </div>
+                            <div class="stack-layer">
+                                <div class="stack-number">5</div>
+                                <div>
+                                    <strong>Message Delivery</strong>: Messages are routed through the SCP overlay network directly to Alice's current network location
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="explanation-box">
+                            <div class="explanation-title">
+                                <i class="fas fa-cogs"></i>
+                                Key Technical Innovations
+                            </div>
+                            <ul>
+                                <li><strong>Location Independence:</strong> Alice can move between networks without changing her address</li>
+                                <li><strong>Built-in Authentication:</strong> Bob verifies Alice's identity using her cryptographic keys</li>
+                                <li><strong>Privacy Protection:</strong> Optional pairwise DIDs prevent correlation of different conversations</li>
+                                <li><strong>Decentralized Resolution:</strong> No central directory service required for address lookup</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- 5. Resolution Subsystem -->
                 <section id="resolution" class="content-section">
                     <div class="section-header">
@@ -1730,7 +1979,7 @@ Bits 5-15: Reserved for future use</code></pre>
                             </div>
                             <div>
                                 <div class="card-title">Three-Tier Resolution System</div>
-                                <div class="card-subtitle">Graceful Degradation with Intelligent Caching</div>
+                                <div class="card-subtitle">Efficient DID Document Lookup with Caching</div>
                             </div>
                         </div>
                         
@@ -1740,7 +1989,7 @@ Bits 5-15: Reserved for future use</code></pre>
                                     <i class="fas fa-memory"></i>
                                 </div>
                                 <h4 class="feature-title">L1 Cache</h4>
-                                <p>In-memory LRU cache (~1000 entries, hot documents)</p>
+                                <p>In-memory LRU cache for frequently accessed DID Documents (~1000 entries)</p>
                             </div>
                             
                             <div class="feature-card">
@@ -1748,7 +1997,7 @@ Bits 5-15: Reserved for future use</code></pre>
                                     <i class="fas fa-database"></i>
                                 </div>
                                 <h4 class="feature-title">L2 Cache</h4>
-                                <p>Persistent local storage (~10,000 entries, warm documents)</p>
+                                <p>Persistent local storage for recently accessed documents (~10,000 entries)</p>
                             </div>
                             
                             <div class="feature-card">
@@ -1756,42 +2005,82 @@ Bits 5-15: Reserved for future use</code></pre>
                                     <i class="fas fa-network-wired"></i>
                                 </div>
                                 <h4 class="feature-title">L3 Cache</h4>
-                                <p>Distributed cache via SCP DHT (unlimited, cold documents)</p>
+                                <p>Distributed cache via SCP DHT for all documents in the network</p>
                             </div>
                         </div>
                     </div>
 
-                    <h3>5.2 DID Resolution State Machine</h3>
+                    <h3>5.2 DID Resolution Process</h3>
                     
-                    <div class="code-block">
-                        <div class="code-header">
-                            <div class="code-title">
-                                <i class="fas fa-project-diagram"></i>
-                                Resolution States
-                            </div>
-                            <button class="code-copy" onclick="copyCode(this)">
-                                <i class="far fa-copy"></i>
-                                Copy
-                            </button>
-                        </div>
-                        <pre><code class="language-rust">pub enum ResolutionState {
-    Unknown,      // DID not previously encountered
-    Resolving,    // Resolution in progress
-    Valid,        // Valid DID document cached
-    Stale,        // Cached document expired, background refresh needed
-    Invalid,      // Resolution failed, temporary backoff
-    Rotated,      // Key rotation detected, document invalidated
-}
-
-impl ResolutionState {
-    pub fn can_use_cache(&self) -> bool {
-        matches!(self, ResolutionState::Valid | ResolutionState::Stale)
-    }
-    
-    pub fn needs_refresh(&self) -> bool {
-        matches!(self, ResolutionState::Stale | ResolutionState::Unknown)
-    }
-}</code></pre>
+                    <div class="ascii-table">
+                        <table>
+                            <tr>
+                                <td>┌─────────────────────────────────────────────────────────────┐</td>
+                            </tr>
+                            <tr>
+                                <td>│                 DID Resolution Flow                          │</td>
+                            </tr>
+                            <tr>
+                                <td>├─────────────────────────────────────────────────────────────┤</td>
+                            </tr>
+                            <tr>
+                                <td>│  1. Receive UDNA address with DID                           │</td>
+                            </tr>
+                            <tr>
+                                <td>│  2. Check L1 cache (memory)                                 │</td>
+                            </tr>
+                            <tr>
+                                <td>│     ├─ Hit: Return cached document                          │</td>
+                            </tr>
+                            <tr>
+                                <td>│     └─ Miss: Continue to step 3                             │</td>
+                            </tr>
+                            <tr>
+                                <td>│  3. Check L2 cache (local storage)                          │</td>
+                            </tr>
+                            <tr>
+                                <td>│     ├─ Hit: Return cached document, update L1              │</td>
+                            </tr>
+                            <tr>
+                                <td>│     └─ Miss: Continue to step 4                             │</td>
+                            </tr>
+                            <tr>
+                                <td>│  4. Query SCP DHT (distributed cache)                       │</td>
+                            </tr>
+                            <tr>
+                                <td>│     ├─ Hit: Return document, update L2 and L1              │</td>
+                            </tr>
+                            <tr>
+                                <td>│     └─ Miss: Perform full resolution                        │</td>
+                            </tr>
+                            <tr>
+                                <td>│  5. Full resolution based on DID method                     │</td>
+                            </tr>
+                            <tr>
+                                <td>│     ├─ did:scp: Query DHT directly                         │</td>
+                            </tr>
+                            <tr>
+                                <td>│     ├─ did:web: HTTPS request to web server                │</td>
+                            </tr>
+                            <tr>
+                                <td>│     ├─ did:key: Local key derivation                       │</td>
+                            </tr>
+                            <tr>
+                                <td>│     └─ Other: Method-specific resolution                   │</td>
+                            </tr>
+                            <tr>
+                                <td>│  6. Validate document signatures and proofs                 │</td>
+                            </tr>
+                            <tr>
+                                <td>│  7. Cache document in L3, L2, and L1                        │</td>
+                            </tr>
+                            <tr>
+                                <td>│  8. Return resolved document                                │</td>
+                            </tr>
+                            <tr>
+                                <td>└─────────────────────────────────────────────────────────────┘</td>
+                            </tr>
+                        </table>
                     </div>
 
                     <h3>5.3 Proof-of-Control Verification</h3>
@@ -1811,7 +2100,7 @@ impl ResolutionState {
                         <h2>6. Cryptographic Framework</h2>
                     </div>
                     
-                    <h3>6.1 Mandatory Algorithms</h3>
+                    <h3>6.1 Required Algorithms</h3>
                     
                     <div class="table-container">
                         <table>
@@ -1871,41 +2160,65 @@ impl ResolutionState {
                         </table>
                     </div>
 
-                    <h3>6.2 Zero-Knowledge Capabilities (ZCAPs)</h3>
+                    <h3>6.2 Key Derivation and Management</h3>
                     
-                    <div class="code-block">
-                        <div class="code-header">
-                            <div class="code-title">
-                                <i class="fas fa-user-secret"></i>
-                                ZCAP JSON Structure
-                            </div>
-                            <button class="code-copy" onclick="copyCode(this)">
-                                <i class="far fa-copy"></i>
-                                Copy
-                            </button>
-                        </div>
-                        <pre><code class="language-json">{
-  "@context": "https://w3id.org/security/v2",
-  "id": "urn:zcap:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
-  "controller": "did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
-  "invoker": "did:scp:z6MkrJVnaZkeFzdQyQbwmWsco8tgNdGtFzxHHFW5qNF1H5vD",
-  "parentCapability": "urn:zcap:root:https://example.com/",
-  "allowedAction": ["read", "write"],
-  "resourceConstraints": {
-    "path": "/secure-documents/*",
-    "timeWindow": {
-      "start": "2025-01-01T00:00:00Z",
-      "end": "2025-12-31T23:59:59Z"
-    }
-  },
-  "proof": {
-    "type": "Ed25519Signature2020",
-    "created": "2025-08-28T10:00:00Z",
-    "verificationMethod": "did:scp:controller#key-1",
-    "proofPurpose": "capabilityDelegation",
-    "proofValue": "z4JPK9i8vKwYwR7Z8hJ5yGxCQ=="
-  }
-}</code></pre>
+                    <div class="ascii-table">
+                        <table>
+                            <tr>
+                                <td>┌─────────────────────────────────────────────────────────────┐</td>
+                            </tr>
+                            <tr>
+                                <td>│            Key Hierarchy and Derivation                      │</td>
+                            </tr>
+                            <tr>
+                                <td>├─────────────────────────────────────────────────────────────┤</td>
+                            </tr>
+                            <tr>
+                                <td>│  Master Key (Root)                                           │</td>
+                            </tr>
+                            <tr>
+                                <td>│  ├─ Identity Key (Ed25519) - Long-term identity              │</td>
+                            </tr>
+                            <tr>
+                                <td>│  ├─ Encryption Key (X25519) - Session establishment         │</td>
+                            </tr>
+                            <tr>
+                                <td>│  └─ Derivation Key - For generating ephemeral keys          │</td>
+                            </tr>
+                            <tr>
+                                <td>│                                                             │</td>
+                            </tr>
+                            <tr>
+                                <td>│  From Identity Key:                                          │</td>
+                            </tr>
+                            <tr>
+                                <td>│  ├─ Pairwise-Persistent DIDs (PP-DIDs)                      │</td>
+                            </tr>
+                            <tr>
+                                <td>│  │   └─ For long-term relationships                         │</td>
+                            </tr>
+                            <tr>
+                                <td>│  └─ Pairwise-Ephemeral DIDs (PE-DIDs)                       │</td>
+                            </tr>
+                            <tr>
+                                <td>│      └─ For single transactions/sessions                    │</td>
+                            </tr>
+                            <tr>
+                                <td>│                                                             │</td>
+                            </tr>
+                            <tr>
+                                <td>│  Derivation Formula:                                         │</td>
+                            </tr>
+                            <tr>
+                                <td>│  PE-DID = BLAKE2b(Root_Private_Key || Context || Counter)   │</td>
+                            </tr>
+                            <tr>
+                                <td>│  Context = relationship_id || purpose || timestamp          │</td>
+                            </tr>
+                            <tr>
+                                <td>└─────────────────────────────────────────────────────────────┘</td>
+                            </tr>
+                        </table>
                     </div>
 
                     <h3>6.3 Key Rotation Protocol</h3>
@@ -1917,7 +2230,7 @@ impl ResolutionState {
                             </div>
                             <div>
                                 <div class="card-title">Three-Phase Rotation Protocol</div>
-                                <div class="card-subtitle">Ensuring Continuous Service Availability</div>
+                                <div class="card-subtitle">Ensuring Continuous Service During Key Updates</div>
                             </div>
                         </div>
                         
@@ -1927,7 +2240,7 @@ impl ResolutionState {
                                     <i class="fas fa-hourglass-start"></i>
                                 </div>
                                 <h4 class="feature-title">Phase 1: Pre-rotation</h4>
-                                <p>Generate new key pair, create new DID Document with both old and new keys</p>
+                                <p>Generate new key pair, create new DID Document with both old and new keys, begin advertising new key</p>
                             </div>
                             
                             <div class="feature-card">
@@ -1935,7 +2248,7 @@ impl ResolutionState {
                                     <i class="fas fa-exchange-alt"></i>
                                 </div>
                                 <h4 class="feature-title">Phase 2: Rotation</h4>
-                                <p>Create rotation proof, broadcast to cached nodes, update service endpoints</p>
+                                <p>Create and sign rotation proof, broadcast to cached nodes, update service endpoints, accept both keys</p>
                             </div>
                             
                             <div class="feature-card">
@@ -1943,7 +2256,7 @@ impl ResolutionState {
                                     <i class="fas fa-hourglass-end"></i>
                                 </div>
                                 <h4 class="feature-title">Phase 3: Post-rotation</h4>
-                                <p>Monitor old-key usage, remove old key after grace period, update DHT</p>
+                                <p>Monitor old-key usage, remove old key after grace period (typically 7 days), update DHT with final document</p>
                             </div>
                         </div>
                     </div>
@@ -1991,73 +2304,84 @@ struct FacetInfo {
 }</code></pre>
                     </div>
 
-                    <h3>7.2 Routing Protocol</h3>
+                    <h3>7.2 Network Discovery and Routing</h3>
                     
-                    <div class="code-block">
-                        <div class="code-header">
-                            <div class="code-title">
-                                <i class="fas fa-route"></i>
-                                Lookup Algorithm
-                            </div>
-                            <button class="code-copy" onclick="copyCode(this)">
-                                <i class="far fa-copy"></i>
-                                Copy
-                            </button>
-                        </div>
-                        <pre><code class="language-plaintext">function lookup(targetNodeID):
-    closest = localRoutingTable.findClosest(targetNodeID, K)
-    
-    while not converged:
-        parallel_queries = []
-        for node in closest:
-            query = sendFindNode(node, targetNodeID)
-            parallel_queries.append(query)
-        
-        responses = awaitAll(parallel_queries, timeout=5s)
-        newClosest = []
-        
-        for response in responses:
-            if response.success:
-                newClosest.extend(response.nodes)
-        
-        newClosest = deduplicate(newClosest)
-        newClosest.sortByDistance(targetNodeID)
-        newClosest = newClosest[:K]
-        
-        if newClosest == closest:
-            converged = true
-        else:
-            closest = newClosest
-    
-    return closest</code></pre>
+                    <div class="ascii-table">
+                        <table>
+                            <tr>
+                                <td>┌─────────────────────────────────────────────────────────────┐</td>
+                            </tr>
+                            <tr>
+                                <td>│          SCP Network Node Discovery                          │</td>
+                            </tr>
+                            <tr>
+                                <td>├─────────────────────────────────────────────────────────────┤</td>
+                            </tr>
+                            <tr>
+                                <td>│  1. Bootstrap: Connect to known entry nodes                  │</td>
+                            </tr>
+                            <tr>
+                                <td>│  2. Exchange: Share routing tables with neighbors            │</td>
+                            </tr>
+                            <tr>
+                                <td>│  3. Store: Publish own PeerInfo to DHT                       │</td>
+                            </tr>
+                            <tr>
+                                <td>│  4. Discover: Learn about other nodes through DHT queries    │</td>
+                            </tr>
+                            <tr>
+                                <td>│  5. Maintain: Regularly refresh routing table entries        │</td>
+                            </tr>
+                            <tr>
+                                <td>│                                                             │</td>
+                            </tr>
+                            <tr>
+                                <td>│          Message Routing Process                             │</td>
+                            </tr>
+                            <tr>
+                                <td>├─────────────────────────────────────────────────────────────┤</td>
+                            </tr>
+                            <tr>
+                                <td>│  1. Resolve target DID to current network locations          │</td>
+                            </tr>
+                            <tr>
+                                <td>│  2. Select optimal route based on latency and reliability    │</td>
+                            </tr>
+                            <tr>
+                                <td>│  3. Establish encrypted session (Noise_XX pattern)           │</td>
+                            </tr>
+                            <tr>
+                                <td>│  4. Transmit message with end-to-end encryption              │</td>
+                            </tr>
+                            <tr>
+                                <td>│  5. Acknowledge delivery or retry as needed                  │</td>
+                            </tr>
+                            <tr>
+                                <td>└─────────────────────────────────────────────────────────────┘</td>
+                            </tr>
+                        </table>
                     </div>
 
-                    <h3>7.3 Security Mechanisms</h3>
+                    <h3>7.3 NAT Traversal and Relaying</h3>
                     
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-user-shield"></i>
-                            </div>
-                            <h4 class="feature-title">Sybil Resistance</h4>
-                            <p>Node IDs cryptographically bound to DID keys with proof-of-work requirements</p>
+                    <div class="explanation-box">
+                        <div class="explanation-title">
+                            <i class="fas fa-satellite-dish"></i>
+                            Network Connectivity Solutions
                         </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-sun"></i>
-                            </div>
-                            <h4 class="feature-title">Eclipse Attack Prevention</h4>
-                            <p>Diverse routing table maintenance with random walk discovery process</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-broadcast-tower"></i>
-                            </div>
-                            <h4 class="feature-title">NAT Traversal</h4>
-                            <p>Relay system with ZCAP-based service negotiation and traffic forwarding</p>
-                        </div>
+                        <p>
+                            UDNA includes several mechanisms to handle network connectivity challenges:
+                        </p>
+                        <ul>
+                            <li><strong>STUN/ICE Integration:</strong> Uses standard NAT traversal techniques to establish direct connections</li>
+                            <li><strong>Relay Nodes:</strong> Designated nodes that forward traffic for NAT-traversed peers</li>
+                            <li><strong>Hole Punching:</strong> Coordinated connection attempts to establish direct P2P links</li>
+                            <li><strong>UPnP/IGD Support:</strong> Automatic port forwarding where supported by network equipment</li>
+                        </ul>
+                        <p>
+                            Relay nodes are compensated for their services through micro-payments or reputation systems, 
+                            ensuring sustainable operation without central funding.
+                        </p>
                     </div>
                 </section>
 
@@ -2076,20 +2400,20 @@ struct FacetInfo {
                             </div>
                             <div>
                                 <div class="card-title">Security Assumptions</div>
-                                <div class="card-subtitle">Formal Security Foundation</div>
+                                <div class="card-subtitle">Foundation for Security Analysis</div>
                             </div>
                         </div>
                         
                         <ul>
-                            <li><strong>Cryptographic Primitives</strong>: Standard assumptions (SUF-CMA for signatures, IND-CCA2 for encryption)</li>
-                            <li><strong>Network Adversary</strong>: Dolev-Yao model - adversary controls network but not endpoints</li>
-                            <li><strong>Honest Majority</strong>: &gt;50% of DHT nodes are honest</li>
-                            <li><strong>Key Security</strong>: Private keys are securely stored and managed</li>
-                            <li><strong>Timing Assumptions</strong>: Clocks are loosely synchronized (±5 minutes)</li>
+                            <li><strong>Cryptographic Primitives</strong>: Standard assumptions hold (SUF-CMA for signatures, IND-CCA2 for encryption)</li>
+                            <li><strong>Network Adversary</strong>: Adversary controls network communication but not endpoint devices</li>
+                            <li><strong>Honest Majority</strong>: More than 50% of DHT nodes follow the protocol correctly</li>
+                            <li><strong>Key Security</strong>: Private keys are securely stored and managed by their owners</li>
+                            <li><strong>Timing Assumptions</strong>: Clocks are loosely synchronized (±5 minutes acceptable)</li>
                         </ul>
                     </div>
 
-                    <h3>8.2 Formal Security Properties</h3>
+                    <h3>8.2 Security Properties and Proofs</h3>
                     
                     <h4>8.2.1 Address Integrity Theorem</h4>
                     <div class="highlight">
@@ -2116,84 +2440,128 @@ struct FacetInfo {
                             </div>
                         </div>
                         
-                        <div class="code-block">
-                            <div class="code-header">
-                                <div class="code-title">
-                                    <i class="fas fa-key"></i>
-                                    PE-DID Derivation Function
-                                </div>
-                                <button class="code-copy" onclick="copyCode(this)">
-                                    <i class="far fa-copy"></i>
-                                    Copy
-                                </button>
-                            </div>
-                            <pre><code class="language-plaintext">PE-DID = KDF(Root_Private_Key, Context_String)
-where Context_String = relationship_id || timestamp || nonce
-
-// Properties:
-// 1. Deterministic: Same inputs → same PE-DID
-// 2. Unlinkable: Without root key, cannot relate PE-DIDs
-// 3. Unique: Different relationships → different PE-DIDs
-// 4. Recoverable: With root key, can regenerate any PE-DID</code></pre>
+                        <div class="ascii-table">
+                            <table>
+                                <tr>
+                                    <td>┌─────────────────────────────────────────────────────────────┐</td>
+                                </tr>
+                                <tr>
+                                    <td>│         Pairwise DID Privacy Properties                     │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────────────────────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  Property                │ Description                      │</td>
+                                </tr>
+                                <tr>
+                                    <td>├──────────────────────────┼──────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  Deterministic           │ Same inputs → same PE-DID        │</td>
+                                </tr>
+                                <tr>
+                                    <td>├──────────────────────────┼──────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  Unlinkable              │ Without root key, cannot relate  │</td>
+                                </tr>
+                                <tr>
+                                    <td>│                          │ PE-DIDs to each other            │</td>
+                                </tr>
+                                <tr>
+                                    <td>├──────────────────────────┼──────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  Unique                  │ Different relationships →        │</td>
+                                </tr>
+                                <tr>
+                                    <td>│                          │ different PE-DIDs                │</td>
+                                </tr>
+                                <tr>
+                                    <td>├──────────────────────────┼──────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  Recoverable             │ With root key, can regenerate    │</td>
+                                </tr>
+                                <tr>
+                                    <td>│                          │ any PE-DID                       │</td>
+                                </tr>
+                                <tr>
+                                    <td>└──────────────────────────┴──────────────────────────────────┘</td>
+                                </tr>
+                            </table>
                         </div>
                         
-                        <div class="feature-grid">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-layer-group"></i>
-                                </div>
-                                <h4 class="feature-title">Onion Routing</h4>
-                                <p>Multi-hop relay chains with layered encryption for metadata protection</p>
+                        <div class="explanation-box">
+                            <div class="explanation-title">
+                                <i class="fas fa-user-friends"></i>
+                                Practical Privacy Example
                             </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-chart-bar"></i>
-                                </div>
-                                <h4 class="feature-title">Traffic Analysis Resistance</h4>
-                                <p>Dummy traffic, cover pools, and timing randomization techniques</p>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-forward"></i>
-                                </div>
-                                <h4 class="feature-title">Forward Secrecy</h4>
-                                <p>Ephemeral key exchange, regular session rotation, secure deletion</p>
-                            </div>
+                            <p>
+                                <strong>Scenario:</strong> Alice wants to communicate with Bob, Carol, and Dave without revealing 
+                                that all communications are from the same person.
+                            </p>
+                            <p>
+                                <strong>Solution:</strong> Alice uses different Pairwise-Ephemeral DIDs for each relationship:
+                            </p>
+                            <ul>
+                                <li>For Bob: <code>PE-DID_B = KDF(Root_Key, "bob-relationship")</code></li>
+                                <li>For Carol: <code>PE-DID_C = KDF(Root_Key, "carol-relationship")</code></li>
+                                <li>For Dave: <code>PE-DID_D = KDF(Root_Key, "dave-relationship")</code></li>
+                            </ul>
+                            <p>
+                                Each party sees a different DID, and without Alice's root key, they cannot determine 
+                                that these DIDs belong to the same person.
+                            </p>
                         </div>
                     </div>
 
-                    <h3>8.4 Quantum Resistance</h3>
+                    <h3>8.4 Attack Mitigations</h3>
                     
-                    <div class="warning">
-                        <p><strong>⚠️ Current Status:</strong> UDNA's current cryptography is not quantum-resistant. The protocol includes agility mechanisms for future migration.</p>
-                    </div>
-                    
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-atom"></i>
-                            </div>
-                            <h4 class="feature-title">Algorithm Identifiers</h4>
-                            <p>DIDType and KeyHint fields support post-quantum algorithm identification</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-random"></i>
-                            </div>
-                            <h4 class="feature-title">Hybrid Modes</h4>
-                            <p>Concurrent use of classical and post-quantum cryptography during transition</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-exchange-alt"></i>
-                            </div>
-                            <h4 class="feature-title">Migration Protocol</h4>
-                            <p>Secure transition protocol to quantum-resistant algorithms when available</p>
-                        </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Attack Type</th>
+                                    <th>Description</th>
+                                    <th>UDNA Mitigation</th>
+                                    <th>Effectiveness</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Eclipse Attack</strong></td>
+                                    <td>Adversary surrounds target with malicious nodes</td>
+                                    <td>Diverse routing table maintenance, random walk discovery</td>
+                                    <td class="good">High</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sybil Attack</strong></td>
+                                    <td>Adversary creates many fake identities</td>
+                                    <td>Proof-of-work for node ID generation, reputation systems</td>
+                                    <td class="good">High</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Replay Attack</strong></td>
+                                    <td>Reusing valid messages</td>
+                                    <td>Nonces, timestamps, session-specific context</td>
+                                    <td class="good">High</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Man-in-the-Middle</strong></td>
+                                    <td>Intercepting and modifying communication</td>
+                                    <td>End-to-end encryption, cryptographic authentication</td>
+                                    <td class="good">High</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Traffic Analysis</strong></td>
+                                    <td>Analyzing metadata patterns</td>
+                                    <td>Cover traffic, timing randomization, onion routing</td>
+                                    <td class="partial">Medium</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </section>
 
@@ -2203,77 +2571,65 @@ where Context_String = relationship_id || timestamp || nonce
                         <h2>9. Implementation Guidelines</h2>
                     </div>
                     
-                    <h3>9.1 Reference Architecture</h3>
+                    <h3>9.1 Reference Implementation Structure</h3>
                     
-                    <div class="code-block">
-                        <div class="code-header">
-                            <div class="code-title">
-                                <i class="fas fa-layer-group"></i>
-                                UDNA Implementation Stack
-                            </div>
-                            <button class="code-copy" onclick="copyCode(this)">
-                                <i class="far fa-copy"></i>
-                                Copy
-                            </button>
-                        </div>
-                        <pre><code class="language-plaintext">┌─────────────────────────────────────────┐
-│            Application Layer             │
-│   (Web3 DApps, Messaging, Storage)      │
-└─────────────────┬───────────────────────┘
-                  │
-┌─────────────────▼───────────────────────┐
-│              UDNA SDK                   │
-│  ┌─────────┐ ┌─────────┐ ┌───────────┐  │
-│  │Resolver │ │ Crypto  │ │Transport  │  │ 
-│  │ Engine  │ │ Engine  │ │  Stack    │  │
-│  └─────────┘ └─────────┘ └───────────┘  │
-└─────────────────┬───────────────────────┘
-                  │
-┌─────────────────▼───────────────────────┐
-│           SCP Core Engine               │
-│  ┌─────────┐ ┌─────────┐ ┌───────────┐  │
-│  │   DHT   │ │  Wire   │ │    NAT    │  │
-│  │ Routing │ │Protocol │ │ Traversal │  │
-│  └─────────┘ └─────────┘ └───────────┘  │
-└─────────────────────────────────────────┘</code></pre>
+                    <div class="ascii-table">
+                        <table>
+                            <tr>
+                                <td>┌─────────────────────────────────────────────────────────────┐</td>
+                            </tr>
+                            <tr>
+                                <td>│               UDNA Implementation Stack                       │</td>
+                            </tr>
+                            <tr>
+                                <td>├─────────────────────────────────────────────────────────────┤</td>
+                            </tr>
+                            <tr>
+                                <td>│  Application Layer                                          │</td>
+                            </tr>
+                            <tr>
+                                <td>│  ├─ DApps, messaging clients, file sharing                 │</td>
+                            </tr>
+                            <tr>
+                                <td>│  └─ UDNA SDK integration                                   │</td>
+                            </tr>
+                            <tr>
+                                <td>├─────────────────────────────────────────────────────────────┤</td>
+                            </tr>
+                            <tr>
+                                <td>│  UDNA SDK                                                  │</td>
+                            </tr>
+                            <tr>
+                                <td>│  ├─ Resolver Engine (DID resolution, caching)              │</td>
+                            </tr>
+                            <tr>
+                                <td>│  ├─ Crypto Engine (signatures, encryption, KDFs)           │</td>
+                            </tr>
+                            <tr>
+                                <td>│  └─ Transport Stack (session management, message routing)  │</td>
+                            </tr>
+                            <tr>
+                                <td>├─────────────────────────────────────────────────────────────┤</td>
+                            </tr>
+                            <tr>
+                                <td>│  SCP Core Engine                                           │</td>
+                            </tr>
+                            <tr>
+                                <td>│  ├─ DHT Routing (Kademlia implementation)                  │</td>
+                            </tr>
+                            <tr>
+                                <td>│  ├─ Wire Protocol (binary format, framing)                 │</td>
+                            </tr>
+                            <tr>
+                                <td>│  └─ NAT Traversal (STUN, ICE, relaying)                    │</td>
+                            </tr>
+                            <tr>
+                                <td>└─────────────────────────────────────────────────────────────┘</td>
+                            </tr>
+                        </table>
                     </div>
 
-                    <h3>9.2 Core Interfaces</h3>
-                    
-                    <div class="code-block">
-                        <div class="code-header">
-                            <div class="code-title">
-                                <i class="fas fa-code"></i>
-                                Crypto Engine Interface (Rust)
-                            </div>
-                            <button class="code-copy" onclick="copyCode(this)">
-                                <i class="far fa-copy"></i>
-                                Copy
-                            </button>
-                        </div>
-                        <pre><code class="language-rust">pub trait CryptoBackend: Send + Sync {
-    fn sign(&self, key_id: &KeyId, message: &[u8]) 
-        -> Result<Vec<u8>, CryptoError>;
-    
-    fn verify(&self, pubkey: &[u8], message: &[u8], signature: &[u8]) 
-        -> Result<bool, CryptoError>;
-    
-    fn derive_shared_secret(&self, privkey_id: &KeyId, peer_pubkey: &[u8]) 
-        -> Result<Vec<u8>, CryptoError>;
-    
-    fn generate_keypair(&self, algorithm: Algorithm) 
-        -> Result<KeyId, CryptoError>;
-    
-    // Zero-knowledge proof operations
-    fn create_proof(&self, statement: &Statement, witness: &Witness) 
-        -> Result<Proof, CryptoError>;
-    
-    fn verify_proof(&self, statement: &Statement, proof: &Proof) 
-        -> Result<bool, CryptoError>;
-}</code></pre>
-                    </div>
-
-                    <h3>9.3 Performance Benchmarks</h3>
+                    <h3>9.2 Performance Requirements</h3>
                     
                     <div class="table-container">
                         <table>
@@ -2289,7 +2645,7 @@ where Context_String = relationship_id || timestamp || nonce
                                 <tr>
                                     <td><strong>DID Resolution</strong></td>
                                     <td>&lt;100ms</td>
-                                    <td>Acceptable for interactive applications</td>
+                                    <td>Interactive application responsiveness</td>
                                     <td>Cached resolution, warm DHT</td>
                                 </tr>
                                 <tr>
@@ -2320,13 +2676,13 @@ where Context_String = relationship_id || timestamp || nonce
                         </table>
                     </div>
 
-                    <h3>9.4 Error Handling</h3>
+                    <h3>9.3 Error Handling and Recovery</h3>
                     
                     <div class="code-block">
                         <div class="code-header">
                             <div class="code-title">
                                 <i class="fas fa-exclamation-triangle"></i>
-                                Error Enumeration (Rust)
+                                Error Handling Framework
                             </div>
                             <button class="code-copy" onclick="copyCode(this)">
                                 <i class="far fa-copy"></i>
@@ -2355,7 +2711,75 @@ pub enum UDNAError {
     
     #[error("ZCAP verification failed: {0}")]
     ZCAPError(String),
+}
+
+// Automatic recovery strategies based on error type
+impl UDNAError {
+    pub fn recovery_strategy(&self) -> RecoveryStrategy {
+        match self {
+            UDNAError::ResolutionFailed(_) => RecoveryStrategy::RetryWithFallback,
+            UDNAError::NetworkError(_) => RecoveryStrategy::Reconnect,
+            UDNAError::KeyRotationError(_) => RecoveryStrategy::RefreshAndRetry,
+            _ => RecoveryStrategy::FailFast,
+        }
+    }
 }</code></pre>
+                    </div>
+                </section>
+
+                <!-- Full-width Deployment Section -->
+                <section class="full-width-section">
+                    <div class="section-header">
+                        <h2>Deployment and Migration Strategies</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bridge"></i>
+                                </div>
+                                <h4 class="feature-title">Gateway Deployment</h4>
+                                <p>UDNA gateways translate between traditional protocols (HTTP, SMTP) and UDNA, enabling gradual adoption without requiring all endpoints to upgrade simultaneously.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <h4 class="feature-title">Hybrid Operation</h4>
+                                <p>Applications can support both traditional addressing and UDNA addressing, with automatic protocol selection based on destination capabilities.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h4 class="feature-title">Mobile and IoT</h4>
+                                <p>Lightweight client implementations with reduced resource requirements for mobile devices and IoT endpoints.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <h4 class="feature-title">Enterprise Integration</h4>
+                                <p>Corporate deployment models with enhanced logging, monitoring, and integration with existing identity management systems.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="explanation-box">
+                            <div class="explanation-title">
+                                <i class="fas fa-road"></i>
+                                Migration Path from Current Internet
+                            </div>
+                            <ol>
+                                <li><strong>Phase 1 (Gateway Services):</strong> UDNA gateways provide access to UDNA network from traditional applications</li>
+                                <li><strong>Phase 2 (Dual-Stack Applications):</strong> Applications support both IP and UDNA addressing</li>
+                                <li><strong>Phase 3 (UDNA-Native Applications):</strong> New applications built specifically for UDNA architecture</li>
+                                <li><strong>Phase 4 (Legacy Protocol Deprecation):</strong> Gradual reduction of traditional protocol support as UDNA adoption increases</li>
+                            </ol>
+                        </div>
                     </div>
                 </section>
 
@@ -2374,37 +2798,61 @@ pub enum UDNAError {
                             </div>
                             <div>
                                 <div class="card-title">UDNA Gateway Architecture</div>
-                                <div class="card-subtitle">Bidirectional Translation Between Protocols</div>
+                                <div class="card-subtitle">Protocol Translation Between Systems</div>
                             </div>
                         </div>
                         
-                        <div class="code-block">
-                            <div class="code-header">
-                                <div class="code-title">
-                                    <i class="fas fa-exchange-alt"></i>
-                                    HTTP ↔ UDNA Translation
-                                </div>
-                                <button class="code-copy" onclick="copyCode(this)">
-                                    <i class="far fa-copy"></i>
-                                    Copy
-                                </button>
-                            </div>
-                            <pre><code class="language-plaintext">// HTTP → UDNA Translation Process:
-// 1. Extract Host header from HTTP request
-// 2. Query DNS for `_udna.<domain>` TXT record
-// 3. Resolve DID to obtain service endpoints  
-// 4. Establish UDNA session to `http` facet
-// 5. Translate HTTP request to UDNA message format
-// 6. Forward response back to HTTP client
-
-// UDNA → HTTP Translation Process:
-// 1. Parse UDNA destination for legacy indicators
-// 2. Establish TLS connection to target server
-// 3. Translate UDNA message to HTTP request
-// 4. Process HTTP response and return via UDNA
-
-// DNS Integration Example:
-_udna.example.com. 300 IN TXT "did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK"</code></pre>
+                        <div class="ascii-table">
+                            <table>
+                                <tr>
+                                    <td>┌─────────────────────────────────────────────────────────────┐</td>
+                                </tr>
+                                <tr>
+                                    <td>│         HTTP ↔ UDNA Gateway Operation                        │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────────────────────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  1. HTTP client sends request to gateway                    │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  2. Gateway extracts Host header                           │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  3. Query DNS for `_udna.<domain>` TXT record              │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  4. TXT record contains target DID                         │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  5. Gateway resolves DID to service endpoints              │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  6. Establish UDNA session to target                       │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  7. Translate HTTP request to UDNA message                 │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  8. Forward response back to HTTP client                    │</td>
+                                </tr>
+                                <tr>
+                                    <td>│                                                             │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  DNS Integration Example:                                   │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  _udna.example.com. 300 IN TXT                             │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  "did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK"│</td>
+                                </tr>
+                                <tr>
+                                    <td>└─────────────────────────────────────────────────────────────┘</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
 
@@ -2414,7 +2862,7 @@ _udna.example.com. 300 IN TXT "did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnE
                         <div class="code-header">
                             <div class="code-title">
                                 <i class="fas fa-handshake"></i>
-                                Cross-Method Support
+                                Cross-Method Support Implementation
                             </div>
                             <button class="code-copy" onclick="copyCode(this)">
                                 <i class="far fa-copy"></i>
@@ -2442,13 +2890,58 @@ impl DIDMethod {
 }</code></pre>
                     </div>
 
-                    <h3>10.3 Cross-Method Messaging</h3>
+                    <h3>10.3 Protocol Bridges</h3>
                     <div class="success">
-                        <p><strong>✅ Seamless Interoperability:</strong> UDNA enables seamless messaging between different DID methods:</p>
-                        <pre><code>did:key:alice  ──UDNA──► did:web:bob.example.com
-did:scp:carol  ──UDNA──► did:ion:dave
-did:ethr:eve   ──UDNA──► did:key:frank</code></pre>
-                        <p>The protocol layer abstracts method differences, providing uniform addressing and communication.</p>
+                        <p><strong>Seamless Cross-Protocol Communication:</strong> UDNA enables communication between different network protocols through protocol bridges:</p>
+                        <div class="ascii-table">
+                            <table>
+                                <tr>
+                                    <td>┌─────────────────────────────────────────────────────────────┐</td>
+                                </tr>
+                                <tr>
+                                    <td>│           Supported Protocol Bridges                         │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────────────────────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  Protocol │ Bridge Type      │ Use Case                     │</td>
+                                </tr>
+                                <tr>
+                                    <td>├───────────┼──────────────────┼──────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  HTTP/HTTPS│Gateway          │ Web application access       │</td>
+                                </tr>
+                                <tr>
+                                    <td>├───────────┼──────────────────┼──────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  SMTP     │Email Gateway    │ Email sending/receiving      │</td>
+                                </tr>
+                                <tr>
+                                    <td>├───────────┼──────────────────┼──────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  XMPP     │Messaging Bridge │ Instant messaging            │</td>
+                                </tr>
+                                <tr>
+                                    <td>├───────────┼──────────────────┼──────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  Matrix   │Federation Bridge│ Chat room federation         │</td>
+                                </tr>
+                                <tr>
+                                    <td>├───────────┼──────────────────┼──────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  IPFS     │Storage Bridge   │ Decentralized file storage   │</td>
+                                </tr>
+                                <tr>
+                                    <td>└───────────┴──────────────────┴──────────────────────────────┘</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </section>
 
@@ -2527,122 +3020,51 @@ ResolutionLiveness ==
         <>[] (ResolveRequest(did) ~> ResolveResponse(did))</code></pre>
                     </div>
 
-                    <h3>11.2 Cryptographic Analysis</h3>
-                    
-                    <h4>11.2.1 Security Reductions</h4>
-                    <div class="highlight">
-                        <p><strong>Theorem 1:</strong> UDNA header integrity reduces to signature scheme security.</p>
-                        <p><strong>Proof Sketch:</strong></p>
-                        <ol>
-                            <li>Assume adversary A can forge valid UDNA headers</li>
-                            <li>Construct signature forger B that uses A as subroutine</li>
-                            <li>B simulates UDNA environment for A, forwarding signature queries</li>
-                            <li>When A produces forged header, B extracts forged signature</li>
-                            <li>Contradiction with signature scheme security</li>
-                        </ol>
-                    </div>
-
-                    <h4>11.2.2 Computational Complexity</h4>
+                    <h3>11.2 Performance Analysis</h3>
                     
                     <div class="table-container">
                         <table>
                             <thead>
                                 <tr>
                                     <th>Operation</th>
-                                    <th>Complexity</th>
-                                    <th>Notes</th>
-                                    <th>Real-world Impact</th>
+                                    <th>Time Complexity</th>
+                                    <th>Space Complexity</th>
+                                    <th>Practical Impact</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>Header Validation</strong></td>
+                                    <td><strong>DID Resolution (cached)</strong></td>
                                     <td>O(1)</td>
-                                    <td>Single signature verification</td>
-                                    <td class="good">&lt;1ms on modern hardware</td>
+                                    <td>O(n) for cache</td>
+                                    <td>&lt;1ms for cache hit</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>DID Resolution</strong></td>
+                                    <td><strong>DID Resolution (DHT)</strong></td>
                                     <td>O(log n)</td>
-                                    <td>DHT lookup in n-node network</td>
-                                    <td class="good">~3 hops for 1M nodes</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Route Discovery</strong></td>
-                                    <td>O(log n)</td>
-                                    <td>Kademlia routing algorithm</td>
-                                    <td class="good">Parallel queries reduce latency</td>
+                                    <td>O(log n) per node</td>
+                                    <td>~200ms for 1M nodes</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Session Establishment</strong></td>
                                     <td>O(1)</td>
-                                    <td>Fixed number of DH operations</td>
-                                    <td class="good">Comparable to TLS 1.3</td>
+                                    <td>O(1)</td>
+                                    <td>~150ms (2x DH ops)</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>ZCAP Verification</strong></td>
+                                    <td><strong>Message Routing</strong></td>
+                                    <td>O(log n)</td>
+                                    <td>O(log n) routing table</td>
+                                    <td>~3 hops average</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Key Rotation</strong></td>
+                                    <td>O(k) for k cached nodes</td>
                                     <td>O(1)</td>
-                                    <td>Single signature + optional ZKP</td>
-                                    <td class="partial">ZKPs add 10-100ms</td>
+                                    <td>Scales with network size</td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-
-                    <h3>11.3 Privacy Analysis</h3>
-                    
-                    <h4>11.3.1 Unlinkability</h4>
-                    <div class="highlight">
-                        <p><strong>Definition:</strong> Two protocol sessions are unlinkable if an adversary cannot determine whether they involve the same participant with probability significantly better than random guessing.</p>
-                        <p><strong>Theorem:</strong> UDNA provides unlinkability when using pairwise ephemeral DIDs.</p>
-                        <p><strong>Proof:</strong> PE-DIDs are derived using cryptographically secure KDFs with unique contexts. Without knowledge of the root private key, distinguishing PE-DIDs from random values is computationally infeasible under standard cryptographic assumptions.</p>
-                    </div>
-
-                    <h4>11.3.2 Traffic Analysis Resistance</h4>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div>
-                                <div class="card-title">Traffic Analysis Countermeasures</div>
-                                <div class="card-subtitle">Defense Against Metadata Analysis</div>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-grid">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                </div>
-                                <h4 class="feature-title">Constant Rate Padding</h4>
-                                <p>Maintain constant transmission rates to mask real traffic patterns</p>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-cloud"></i>
-                                </div>
-                                <h4 class="feature-title">Cover Traffic</h4>
-                                <p>Generate dummy messages to mask real communication volumes</p>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-layer-group"></i>
-                                </div>
-                                <h4 class="feature-title">Onion Routing</h4>
-                                <p>Multi-hop routing with layered encryption to hide source/destination</p>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <h4 class="feature-title">Timing Randomization</h4>
-                                <p>Add random delays to break timing correlations and pattern analysis</p>
-                            </div>
-                        </div>
                     </div>
                 </section>
 
@@ -2661,7 +3083,7 @@ ResolutionLiveness ==
                             </div>
                             <div>
                                 <div class="card-title">Active Research Areas</div>
-                                <div class="card-subtitle">Areas Requiring Further Investigation</div>
+                                <div class="card-subtitle">Technical Challenges Requiring Further Investigation</div>
                             </div>
                         </div>
                         
@@ -2670,32 +3092,32 @@ ResolutionLiveness ==
                                 <div class="feature-icon">
                                     <i class="fas fa-atom"></i>
                                 </div>
-                                <h4 class="feature-title">Quantum-Resistant Cryptography</h4>
-                                <p>Integration of NIST PQC standards, hybrid security models, QKD integration</p>
+                                <h4 class="feature-title">Post-Quantum Cryptography</h4>
+                                <p>Integration of NIST-selected PQC algorithms, hybrid cryptographic modes, quantum key distribution integration</p>
                             </div>
                             
                             <div class="feature-card">
                                 <div class="feature-icon">
                                     <i class="fas fa-user-secret"></i>
                                 </div>
-                                <h4 class="feature-title">Advanced Privacy Technologies</h4>
-                                <p>Private Information Retrieval, Homomorphic Encryption, Secure MPC</p>
+                                <h4 class="feature-title">Advanced Privacy</h4>
+                                <p>Private information retrieval, fully homomorphic encryption, secure multi-party computation integration</p>
                             </div>
                             
                             <div class="feature-card">
                                 <div class="feature-icon">
                                     <i class="fas fa-expand-arrows-alt"></i>
                                 </div>
-                                <h4 class="feature-title">Scalability Enhancements</h4>
-                                <p>Sharding, hierarchical addressing, content-addressable storage integration</p>
+                                <h4 class="feature-title">Scalability Solutions</h4>
+                                <p>DHT sharding, hierarchical addressing schemes, content-addressable storage for large documents</p>
                             </div>
                             
                             <div class="feature-card">
                                 <div class="feature-icon">
-                                    <i class="fas fa-brain"></i>
+                                    <i class="fas fa-bolt"></i>
                                 </div>
-                                <h4 class="feature-title">AI/ML Integration</h4>
-                                <p>Intelligent routing, anomaly detection, adaptive security policies</p>
+                                <h4 class="feature-title">Performance Optimization</h4>
+                                <p>Hardware acceleration, protocol simplifications, reduced handshake overhead for low-power devices</p>
                             </div>
                         </div>
                     </div>
@@ -2739,34 +3161,6 @@ ResolutionLiveness ==
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-
-                    <h3>12.3 Standards Bodies Integration</h3>
-                    
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-globe"></i>
-                            </div>
-                            <h4 class="feature-title">IETF</h4>
-                            <p>Internet-Draft submission for core protocol, routing, and security specifications</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-layer-group"></i>
-                            </div>
-                            <h4 class="feature-title">W3C</h4>
-                            <p>DID Method specification for `did:scp`, integration with VC and DIDComm standards</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <h4 class="feature-title">ISO/IEC</h4>
-                            <p>Security evaluation, certification, international standardization</p>
-                        </div>
                     </div>
                 </section>
 
@@ -2816,20 +3210,6 @@ ResolutionLiveness ==
                                 <strong>[ZCAP-LD]</strong> Longley, D. and M. Sporny, "Authorization Capabilities for Linked Data v0.3", Digital Bazaar, 2021.
                             </li>
                         </ul>
-
-                        <h3>13.3 Cryptographic References</h3>
-                        
-                        <ul class="reference-list">
-                            <li class="reference-item" data-number="11">
-                                <strong>[BLAKE2]</strong> Aumasson, J-P., Neves, S., Wilcox-O'Hearn, Z., and C. Winnerlein, "BLAKE2: simpler, smaller, fast as MD5", ACNS 2013.
-                            </li>
-                            <li class="reference-item" data-number="12">
-                                <strong>[BLAKE3]</strong> O'Connor, J., Aumasson, J-P., Neves, S., and Z. Wilcox-O'Hearn, "BLAKE3: one function, fast everywhere", 2020.
-                            </li>
-                            <li class="reference-item" data-number="13">
-                                <strong>[BLS]</strong> Boneh, D., Lynn, B., and H. Shacham, "Short Signatures from the Weil Pairing", Journal of Cryptology, 2004.
-                            </li>
-                        </ul>
                     </div>
                 </section>
 
@@ -2839,13 +3219,13 @@ ResolutionLiveness ==
                         <h2>14. Appendices</h2>
                     </div>
                     
-                    <h3>14.1 Appendix A: ABNF Grammar</h3>
+                    <h3>14.1 Appendix A: Protocol Grammar</h3>
                     
                     <div class="code-block">
                         <div class="code-header">
                             <div class="code-title">
                                 <i class="fas fa-language"></i>
-                                UDNA Address ABNF Grammar
+                                UDNA Address Grammar
                             </div>
                             <button class="code-copy" onclick="copyCode(this)">
                                 <i class="far fa-copy"></i>
@@ -2858,55 +3238,10 @@ method-name = 1*method-char
 method-char = %x61-7A / DIGIT  ; lowercase letters and digits
 method-specific-id = *idchar
 idchar = ALPHA / DIGIT / "." / "-" / "_"
-facet-id = 1*3DIGIT  ; 0-255
-
-; ZCAP Invocation Grammar
-zcap-invocation = capability-id ":" signature
-capability-id = "urn:zcap:" version ":" proof-components
-version = "1"
-proof-components = [ proof-purpose ";" ] [ invoker ";" ] [ nonce ]
-proof-purpose = "p=" ( "capabilityInvocation" / "capabilityDelegation" )
-invoker = "i=" did-identifier
-nonce = "n=" 64HEXDIG
-signature = [ algorithm ":" ] 1*base64char
-algorithm = "ed25519" / "bls12381" / "es256k"
-base64char = ALPHA / DIGIT / "+" / "/" / "="</code></pre>
+facet-id = 1*3DIGIT  ; 0-255</code></pre>
                     </div>
 
-                    <h3>14.2 Appendix B: Test Vectors</h3>
-                    
-                    <div class="code-block">
-                        <div class="code-header">
-                            <div class="code-title">
-                                <i class="fas fa-vial"></i>
-                                DID Resolution Test Vector
-                            </div>
-                            <button class="code-copy" onclick="copyCode(this)">
-                                <i class="far fa-copy"></i>
-                                Copy
-                            </button>
-                        </div>
-                        <pre><code class="language-json">{
-  "did": "did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
-  "expected_document": {
-    "@context": "https://www.w3.org/ns/did/v1",
-    "id": "did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
-    "verificationMethod": [{
-      "id": "did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK#key-1",
-      "type": "Ed25519VerificationKey2020",
-      "controller": "did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
-      "publicKeyMultibase": "z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK"
-    }],
-    "service": [{
-      "id": "did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK#messaging",
-      "type": "MessagingService", 
-      "serviceEndpoint": "udna://did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK:1"
-    }]
-  }
-}</code></pre>
-                    </div>
-
-                    <h3>14.3 Appendix C: Implementation Checklist</h3>
+                    <h3>14.2 Appendix B: Implementation Checklist</h3>
                     
                     <div class="card">
                         <div class="card-header">
@@ -2914,104 +3249,123 @@ base64char = ALPHA / DIGIT / "+" / "/" / "="</code></pre>
                                 <i class="fas fa-tasks"></i>
                             </div>
                             <div>
-                                <div class="card-title">Comprehensive Implementation Checklist</div>
-                                <div class="card-subtitle">All Requirements for UDNA Compliance</div>
+                                <div class="card-title">Implementation Requirements Checklist</div>
+                                <div class="card-subtitle">Minimum Requirements for UDNA Compliance</div>
                             </div>
                         </div>
                         
-                        <div class="feature-grid">
-                            <div class="feature-card">
-                                <h4 class="feature-title">Core Protocol Compliance</h4>
-                                <ul>
-                                    <li>☐ UDNA header parsing and validation</li>
-                                    <li>☐ Ed25519 signature support</li>
-                                    <li>☐ X25519 key agreement</li>
-                                    <li>☐ ChaCha20-Poly1305 encryption</li>
-                                    <li>☐ BLAKE2b/BLAKE3 hashing</li>
-                                    <li>☐ DID resolution with caching</li>
-                                    <li>☐ Key rotation protocol</li>
-                                    <li>☐ ZCAP creation and verification</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <h4 class="feature-title">Network Protocol Compliance</h4>
-                                <ul>
-                                    <li>☐ DHT node implementation</li>
-                                    <li>☐ Kademlia routing algorithm</li>
-                                    <li>☐ NAT traversal support</li>
-                                    <li>☐ Relay system integration</li>
-                                    <li>☐ Peer discovery mechanism</li>
-                                    <li>☐ Network message framing</li>
-                                    <li>☐ Session establishment (Noise_XX)</li>
-                                    <li>☐ Forward secrecy implementation</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <h4 class="feature-title">Security Requirements</h4>
-                                <ul>
-                                    <li>☐ Secure key generation and storage</li>
-                                    <li>☐ Proof-of-control verification</li>
-                                    <li>☐ Replay attack prevention</li>
-                                    <li>☐ Eclipse attack mitigation</li>
-                                    <li>☐ Sybil attack resistance</li>
-                                    <li>☐ Traffic analysis protection</li>
-                                    <li>☐ Secure memory management</li>
-                                    <li>☐ Constant-time operations</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <h4 class="feature-title">Interoperability Requirements</h4>
-                                <ul>
-                                    <li>☐ Multiple DID method support</li>
-                                    <li>☐ Legacy DNS integration</li>
-                                    <li>☐ HTTP/HTTPS gateway</li>
-                                    <li>☐ Blockchain DID compatibility</li>
-                                    <li>☐ Cross-platform support</li>
-                                    <li>☐ Standards compliance testing</li>
-                                    <li>☐ Protocol version negotiation</li>
-                                    <li>☐ Graceful degradation</li>
-                                </ul>
-                            </div>
+                        <div class="ascii-table">
+                            <table>
+                                <tr>
+                                    <td>┌─────────────────────────────────────────────────────────────┐</td>
+                                </tr>
+                                <tr>
+                                    <td>│                Core Protocol Requirements                    │</td>
+                                </tr>
+                                <tr>
+                                    <td>├─────────────────────────────────────────────────────────────┤</td>
+                                </tr>
+                                <tr>
+                                    <td>│  ☐ UDNA header parsing and validation                       │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  ☐ Ed25519 signature creation and verification              │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  ☐ X25519 key agreement for session establishment          │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  ☐ ChaCha20-Poly1305 encryption and decryption             │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  ☐ BLAKE2b/BLAKE3 hash functions                           │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  ☐ DID resolution with three-tier caching                  │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  ☐ Key rotation protocol implementation                    │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  ☐ SCP DHT node operation and routing                      │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  ☐ NAT traversal mechanisms (STUN/ICE/relaying)            │</td>
+                                </tr>
+                                <tr>
+                                    <td>│  ☐ Pairwise DID generation and management                  │</td>
+                                </tr>
+                                <tr>
+                                    <td>└─────────────────────────────────────────────────────────────┘</td>
+                                </tr>
+                            </table>
                         </div>
+                    </div>
+
+                    <h3>14.3 Appendix C: Test Vectors</h3>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <div class="code-title">
+                                <i class="fas fa-vial"></i>
+                                Sample Test Case
+                            </div>
+                            <button class="code-copy" onclick="copyCode(this)">
+                                <i class="far fa-copy"></i>
+                                Copy
+                            </button>
+                        </div>
+                        <pre><code class="language-json">{
+  "test_name": "Basic DID Resolution and Validation",
+  "input": {
+    "did": "did:scp:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
+    "operation": "resolve_and_validate"
+  },
+  "expected_output": {
+    "resolution_time": "&lt;100ms",
+    "validation_result": "valid",
+    "document_properties": {
+      "has_verification_method": true,
+      "has_service_endpoint": true,
+      "signature_valid": true
+    }
+  },
+  "notes": "Test should be run with warm cache and network connectivity"
+}</code></pre>
                     </div>
                 </section>
 
                 <!-- Footer -->
                 <footer class="footer">
-                    <div class="container">
-                        <div class="footer-content">
-                            <div>
-                                <strong>Universal DID-Native Addressing (UDNA)</strong><br>
-                                <small>W3C Community Group • Document Version 2.0</small>
-                            </div>
-                            
-                            <div class="footer-links">
-                                <a href="https://www.w3.org/community/about/agreements/" class="footer-link" target="_blank">
-                                    <i class="fas fa-file-contract"></i>
-                                    Participant Agreement
-                                </a>
-                                <a href="https://www.w3.org/policies/#privacy" class="footer-link" target="_blank">
-                                    <i class="fas fa-user-shield"></i>
-                                    Privacy Policy
-                                </a>
-                                <a href="mailto:public-did-native-addr@w3.org" class="footer-link">
-                                    <i class="fas fa-envelope"></i>
-                                    Contact
-                                </a>
-                                <a href="https://github.com/w3c-cg/udna" class="footer-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    GitHub
-                                </a>
-                            </div>
+                    <div class="footer-content">
+                        <div>
+                            <strong>Universal DID-Native Addressing (UDNA)</strong><br>
+                            <small>W3C Community Group • Document Version 2.0</small>
                         </div>
                         
-                        <div class="copyright">
-                            © 2025 World Wide Web Consortium (W3C®). Published by the UDNA Community Group.<br>
-                            <small>W3C liability, trademark and permissive document license rules apply.</small>
+                        <div class="footer-links">
+                            <a href="https://www.w3.org/community/about/agreements/" class="footer-link" target="_blank">
+                                <i class="fas fa-file-contract"></i>
+                                Participant Agreement
+                            </a>
+                            <a href="https://www.w3.org/policies/#privacy" class="footer-link" target="_blank">
+                                <i class="fas fa-user-shield"></i>
+                                Privacy Policy
+                            </a>
+                            <a href="mailto:public-did-native-addr@w3.org" class="footer-link">
+                                <i class="fas fa-envelope"></i>
+                                Contact
+                            </a>
+                            <a href="https://github.com/w3c-cg/udna" class="footer-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
                         </div>
+                    </div>
+                    
+                    <div class="copyright">
+                        © 2025 World Wide Web Consortium (W3C®). Published by the UDNA Community Group.<br>
+                        <small>W3C liability, trademark and permissive document license rules apply.</small>
                     </div>
                 </footer>
             </main>
@@ -3161,17 +3515,6 @@ base64char = ALPHA / DIGIT / "+" / "/" / "="</code></pre>
         // Observe all content sections
         document.querySelectorAll('.content-section').forEach(section => {
             observer.observe(section);
-        });
-        
-        // Print functionality
-        window.addEventListener('beforeprint', () => {
-            sidebar.style.display = 'none';
-            mobileMenuToggle.style.display = 'none';
-        });
-        
-        window.addEventListener('afterprint', () => {
-            sidebar.style.display = '';
-            mobileMenuToggle.style.display = '';
         });
         
         // Initialize
